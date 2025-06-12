@@ -1,0 +1,14 @@
+{
+    "name": "TileMonsterHunter.Input.Abstractions",
+    "rootNamespace": "TileMonsterHunter.Input.Abstractions",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
