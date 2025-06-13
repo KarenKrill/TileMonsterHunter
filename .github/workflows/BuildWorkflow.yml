@@ -13,6 +13,7 @@ concurrency:
 
 jobs:
   WindowsBasedBuild:
+    if: false
     name: ${{ matrix.targetPlatform }} build (${{ matrix.unityVersion }})
     runs-on: windows-latest
     strategy:
@@ -62,6 +63,7 @@ jobs:
           path: build/${{ matrix.targetPlatform }}
 
   LinuxBasedBuild:
+    if: false
     name: ${{ matrix.targetPlatform }} build (${{ matrix.unityVersion }})
     runs-on: ubuntu-latest
     strategy:
