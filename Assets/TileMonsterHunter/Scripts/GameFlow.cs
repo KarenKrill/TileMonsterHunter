@@ -11,9 +11,11 @@ namespace TileMonsterHunter
     {
         public GameState State => _stateSwitcher.State;
 
-        public GameFlow(IStateSwitcher<GameState> stateSwitcher)
+        public GameFlow(IStateSwitcher<GameState> stateSwitcher,
+            IPlayerProfileProvider playerProfileProvider)
         {
             _stateSwitcher = stateSwitcher;
+            _playerProfileProvider = playerProfileProvider;
         }
         public void LoadMainMenu()
         {
@@ -57,18 +59,21 @@ namespace TileMonsterHunter
         }
         public void RestartLevel()
         {
-            throw new System.NotImplementedException();
+            _stateSwitcher.TransitTo(GameState.Gameplay);
         }
         public void WinLevel()
         {
-            throw new System.NotImplementedException();
+            EndLevel(1);
+            _stateSwitcher.TransitTo(GameState.LevelEnd);
         }
         public void LoseLevel()
         {
-            throw new System.NotImplementedException();
+            EndLevel(0);
+            _stateSwitcher.TransitTo(GameState.LevelEnd);
         }
 
         private readonly IStateSwitcher<GameState> _stateSwitcher;
+        private readonly IPlayerProfileProvider _playerProfileProvider;
         private AsyncOperation _loadSceneAwaiter;
         private void OnMainMenuLoadCompleted(AsyncOperation obj)
         {
@@ -77,6 +82,18 @@ namespace TileMonsterHunter
         private void OnLevelLoadCompleted(AsyncOperation obj)
         {
             _stateSwitcher.TransitTo(GameState.Gameplay);
+        }
+        private void EndLevel(int rating)
+        {
+            var profile = _playerProfileProvider.CurrentProfile;
+            if (profile.LevelCompletionInfo.LevelsRating.Count <= profile.LevelCompletionInfo.LastLevel)
+            {
+                profile.LevelCompletionInfo.LevelsRating.Add(rating);
+            }
+            else
+            {
+                profile.LevelCompletionInfo.LevelsRating[profile.LevelCompletionInfo.LastLevel] = rating;
+            }
         }
     }
 }
