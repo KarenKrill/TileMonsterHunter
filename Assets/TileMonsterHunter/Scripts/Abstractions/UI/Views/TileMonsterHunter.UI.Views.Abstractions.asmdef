@@ -1,0 +1,16 @@
+{
+    "name": "TileMonsterHunter.UI.Views.Abstractions",
+    "rootNamespace": "TileMonsterHunter.UI.Views.Abstractions",
+    "references": [
+        "GUID:7a46791a36c29db4382df4ea59e1f085"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
