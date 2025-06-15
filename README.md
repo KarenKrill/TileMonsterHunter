@@ -4,13 +4,13 @@ Title Monster Hunter is a Triple Tile Match game where you play as a monster hun
 
 ## Roadmap
 ##### MVP
-- [ ] Tile field generation
-- [ ] Tile field cleaning mechanics
-- [ ] Tiles action bar mechanics
-- [ ] Level start animation (hourglass effect)
-- [ ] Gravitational subsidence of the remaining tiles when one is removed
-- [ ] Tile field refresh ability
-- [ ] Win/Lose screens
+- [x] Tile field generation
+- [x] Tile field cleaning mechanics
+- [x] Tiles action bar mechanics
+- [x] Level start animation (hourglass effect)
+- [x] Gravitational subsidence of the remaining tiles when one is removed
+- [x] Tile field refresh ability
+- [x] Win/Lose screens
 
 ##### Features
 - [ ] Tile abilities (heavy, sticky, frozen, explosive, time affective)
