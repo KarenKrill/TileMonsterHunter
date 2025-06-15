@@ -22,7 +22,8 @@ namespace TileMonsterHunter.GameStates
             ITileHotBar tileHotBar,
             ITileRepository tileRepository,
             ITileFieldSpawner tileFieldSpawner,
-            IGameUIPresenter gameUIPresenter) : base(gameUIPresenter)
+            IGameUIPresenter gameUIPresenter,
+            IEffectManagerProvider effectManagerProvider) : base(gameUIPresenter)
         {
             _logger = logger;
             _gameFlow = gameFlow;
@@ -33,6 +34,7 @@ namespace TileMonsterHunter.GameStates
             _tileFieldSpawner = tileFieldSpawner;
             _tileRepository = tileRepository;
             _gameUIPresenter = gameUIPresenter;
+            _effectManagerProvider = effectManagerProvider;
         }
         public override void Enter(GameState prevState)
         {
@@ -75,6 +77,7 @@ namespace TileMonsterHunter.GameStates
         private readonly ITileFieldSpawner _tileFieldSpawner;
         private readonly ITileRepository _tileRepository;
         private readonly IGameUIPresenter _gameUIPresenter;
+        private readonly IEffectManagerProvider _effectManagerProvider;
 
         private void OnPause()
         {
@@ -95,6 +98,7 @@ namespace TileMonsterHunter.GameStates
         }
         private void OnTileFieldSpawnCompleted()
         {
+            _effectManagerProvider.Current?.StopEffect(EffectType.Hourglass);
             _inputService.SetActionMap(ActionMap.Player);
         }
         private void OnHotBarTileAdded(TileInfo tileInfo)
@@ -142,6 +146,7 @@ namespace TileMonsterHunter.GameStates
         }
         private void GenerateLevel()
         {
+            _effectManagerProvider.Current?.StartEffect(EffectType.Hourglass);
             var lastLevel = _playerProfileProvider.CurrentProfile.LevelCompletionInfo.LastLevel;
             var tilesCount = (lastLevel + 1) * 20; // TODO: replace by LevelInfoProvider, which configured by SO
             var matchCount = 3;

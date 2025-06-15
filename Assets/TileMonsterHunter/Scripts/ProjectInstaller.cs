@@ -31,6 +31,7 @@ namespace TileMonsterHunter
             Container.Bind<ILogger>().To<StubLogger>().FromNew().AsSingle();
 #endif
             Container.BindInterfacesAndSelfTo<GameFlow>().AsSingle();
+            Container.BindInterfacesAndSelfTo<EffectManagerProvider>().AsSingle();
             InstallGameStateMachine();
             InstallViewFactory();
             Container.BindInterfacesAndSelfTo<DiagnosticsProvider>().FromInstance(_diagnosticsProvider).AsSingle();
