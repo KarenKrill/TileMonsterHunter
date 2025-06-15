@@ -2,6 +2,17 @@
 
 Title Monster Hunter is a Triple Tile Match game where you play as a monster hunter and destroy all evil spirits in his path.
 
+### Lose strategy
+<p align="center">
+  <img src="LoseGameplay.gif" alt="LoseGameplay"/>
+</p>
+
+### Win strategy
+<p align="center">
+  <img src="WinGameplay.gif" alt="WinGameplay"/>
+</p>
+
+
 ## Roadmap
 ##### MVP
 - [x] Tile field generation
